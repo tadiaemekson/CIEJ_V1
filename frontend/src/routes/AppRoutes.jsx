@@ -12,6 +12,14 @@ import LoginPage from '../modules/auth/LoginPage';
 import RegisterPage from '../modules/auth/RegisterPage';
 import DashboardOverview from '../modules/dashboard/DashboardOverview';
 
+// Dashboard / Admin Modules
+import AdhesionManagement from '../modules/dashboard/AdhesionManagement';
+import MembersManagement from '../modules/dashboard/MembersManagement';
+import CotisationsManagement from '../modules/dashboard/CotisationsManagement';
+import EventsManagement from '../modules/dashboard/EventsManagement';
+import FormationsManagement from '../modules/dashboard/FormationsManagement';
+import FcsManagement from '../modules/dashboard/FcsManagement';
+
 // Protected Route Wrapper
 const ProtectedRoute = ({ children }) => {
     const { isAuthenticated, loading } = useAuth();
@@ -83,12 +91,12 @@ const AppRoutes = () => {
                 </ProtectedRoute>
             }>
                 <Route index element={<DashboardOverview />} />
-                <Route path="adhesion" element={<div style={{ padding: '1rem' }}><h2>Mon Dossier d'Adhésion</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Suivez le statut de validation de votre dossier d'adhésion.</p></div>} />
-                <Route path="members" element={<div style={{ padding: '1rem' }}><h2>Membres & Annuaire B2B</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Consultez la liste des entrepreneurs adhérents.</p></div>} />
-                <Route path="cotisations" element={<div style={{ padding: '1rem' }}><h2>Mes Cotisations</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Historique de vos paiements et règlement de la cotisation annuelle.</p></div>} />
-                <Route path="events" element={<div style={{ padding: '1rem' }}><h2>Événements</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Participez aux prochains salons, assemblées et sommets.</p></div>} />
-                <Route path="formations" element={<div style={{ padding: '1rem' }}><h2>Formations</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Accédez à vos modules de cours en vidéo et documents PDF.</p></div>} />
-                <Route path="fcs" element={<div style={{ padding: '1rem' }}><h2>Fonds de Croissance Stratégique (FCS)</h2><p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Gérez vos demandes de financement, déblocages et remboursements.</p></div>} />
+                <Route path="adhesion" element={<AdhesionManagement />} />
+                <Route path="members" element={<MembersManagement />} />
+                <Route path="cotisations" element={<CotisationsManagement />} />
+                <Route path="events" element={<EventsManagement />} />
+                <Route path="formations" element={<FormationsManagement />} />
+                <Route path="fcs" element={<FcsManagement />} />
             </Route>
 
             {/* Catch-all */}

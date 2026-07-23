@@ -8,11 +8,19 @@ const DashboardLayout = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const menuItems = [
+    const menuItems = user?.role === 'super_admin' ? [
+        { name: 'Administration', path: '/dashboard', icon: LayoutDashboard },
+        { name: 'Dossiers d\'Adhésion', path: '/dashboard/adhesion', icon: ShieldAlert },
+        { name: 'Membres & Rôles', path: '/dashboard/members', icon: Users },
+        { name: 'Suivi Cotisations', path: '/dashboard/cotisations', icon: CreditCard },
+        { name: 'Gestion Événements', path: '/dashboard/events', icon: Calendar },
+        { name: 'Gestion Formations', path: '/dashboard/formations', icon: GraduationCap },
+        { name: 'Financements FCS', path: '/dashboard/fcs', icon: Award },
+    ] : [
         { name: 'Vue d\'ensemble', path: '/dashboard', icon: LayoutDashboard },
         { name: 'Mon Dossier d\'Adhésion', path: '/dashboard/adhesion', icon: ShieldAlert },
-        { name: 'Membres & Annuaire', path: '/dashboard/members', icon: Users },
-        { name: 'Cotisations', path: '/dashboard/cotisations', icon: CreditCard },
+        { name: 'Membres & Annuaire B2B', path: '/dashboard/members', icon: Users },
+        { name: 'Mes Cotisations', path: '/dashboard/cotisations', icon: CreditCard },
         { name: 'Événements', path: '/dashboard/events', icon: Calendar },
         { name: 'Formations', path: '/dashboard/formations', icon: GraduationCap },
         { name: 'Fonds FCS', path: '/dashboard/fcs', icon: Award },
@@ -106,7 +114,9 @@ const DashboardLayout = () => {
                     alignItems: 'center', height: 'var(--header-height)'
                 }}>
                     <div>
-                        <h4 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Espace Membre</h4>
+                        <h4 style={{ fontSize: '1.1rem', fontWeight: 600 }}>
+                            {user?.role === 'super_admin' ? 'Espace Secrétariat / Admin' : 'Espace Membre'}
+                        </h4>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                         <span style={{
