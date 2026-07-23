@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '+237 600 000 000',
             'role' => 'super_admin',
             'status' => 'active',
-            'password' => Hash::make('admin1234'),
+            'password' => Hash::make('CIEJ-Admin#2026!Secr3t'),
         ]);
 
         // 3. Seed Normal Member User
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '+237 677 777 777',
             'role' => 'membre',
             'status' => 'active',
-            'password' => Hash::make('member1234'),
+            'password' => Hash::make('CIEJ-Member#2026!P@ss'),
         ]);
 
         // 4. Seed Normal Member's Enterprise
