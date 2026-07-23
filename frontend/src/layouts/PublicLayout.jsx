@@ -49,10 +49,10 @@ const PublicLayout = () => {
 
             {/* Footer */}
             <footer style={{
-                backgroundColor: '#06140e',
-                color: '#94a3b8',
+                backgroundColor: 'var(--bg-color)',
+                color: 'var(--text-secondary)',
                 padding: '4rem 2rem 2rem',
-                borderTop: '1px solid rgba(16, 185, 129, 0.1)',
+                borderTop: '1px solid var(--border-color)',
                 marginTop: 'auto',
                 fontFamily: 'var(--font-body)'
             }}>
@@ -69,29 +69,29 @@ const PublicLayout = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                             <img src="/logo.png" alt="CIEJ Logo" style={{ height: '36px' }} />
                         </div>
-                        <p style={{ fontSize: '0.9rem', lineHeight: '1.6', color: '#cbd5e1' }}>
+                        <p style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
                             La Chambre des Icônes de l'Entrepreneuriat Jeune (CIEJ) est l'organisation nationale regroupant les leaders économiques émergents du Cameroun.
                         </p>
-                        <span style={{ fontStyle: 'italic', fontWeight: 600, color: '#4ade80', fontSize: '0.95rem' }}>
+                        <span style={{ fontStyle: 'italic', fontWeight: 600, color: 'var(--primary-color)', fontSize: '0.95rem' }}>
                             « Excellence - Synergie - Impact »
                         </span>
                         
                         {/* WhatsApp link button */}
                         <a href="https://wa.me/237699555444" target="_blank" rel="noopener noreferrer" style={{
                             width: '40px', height: '40px', borderRadius: '8px', 
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#10b981', 
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)', color: 'var(--primary-color)', 
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: '1px solid rgba(16, 185, 129, 0.2)', transition: 'all 0.2s ease',
+                            border: '1px solid var(--border-color)', transition: 'all 0.2s ease',
                             marginTop: '0.5rem',
                             textDecoration: 'none'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#10b981';
+                            e.currentTarget.style.backgroundColor = 'var(--primary-color)';
                             e.currentTarget.style.color = '#ffffff';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
-                            e.currentTarget.style.color = '#10b981';
+                            e.currentTarget.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+                            e.currentTarget.style.color = 'var(--primary-color)';
                         }}
                         >
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -102,43 +102,43 @@ const PublicLayout = () => {
 
                     {/* Column 2 */}
                     <div>
-                        <h4 style={{ color: '#4ade80', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
+                        <h4 style={{ color: 'var(--primary-color)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
                             Chambre
                         </h4>
                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <li><Link to="/directory" style={{ color: '#94a3b8', fontSize: '0.95rem' }}>Membres Actifs</Link></li>
-                            <li><Link to="/about" style={{ color: '#94a3b8', fontSize: '0.95rem' }}>À Propos de nous</Link></li>
-                            <li><Link to="/about" style={{ color: '#94a3b8', fontSize: '0.95rem' }}>Gouvernance</Link></li>
+                            <li><Link to="/directory" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Membres Actifs</Link></li>
+                            <li><Link to="/about" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>À Propos de nous</Link></li>
+                            <li><Link to="/about" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Gouvernance</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 3 */}
                     <div>
-                        <h4 style={{ color: '#4ade80', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
+                        <h4 style={{ color: 'var(--primary-color)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
                             Adhésion & Aide
                         </h4>
                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <li><Link to="/register" style={{ color: '#94a3b8', fontSize: '0.95rem' }}>Demander mon adhésion</Link></li>
-                            <li><Link to="/login" style={{ color: '#94a3b8', fontSize: '0.95rem' }}>Connexion Espace Membre</Link></li>
+                            <li><Link to="/register" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Demander mon adhésion</Link></li>
+                            <li><Link to="/login" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Connexion Espace Membre</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 4 */}
                     <div>
-                        <h4 style={{ color: '#4ade80', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
+                        <h4 style={{ color: 'var(--primary-color)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', fontWeight: 700 }}>
                             Secrétariat
                         </h4>
                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', fontSize: '0.95rem', color: '#cbd5e1' }}>
-                                <MapPin size={18} style={{ color: '#ec4899', flexShrink: 0, marginTop: '0.2rem' }} />
+                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                                <MapPin size={18} style={{ color: 'var(--primary-color)', flexShrink: 0, marginTop: '0.2rem' }} />
                                 <span>Rue de la Chambre, Yaoundé</span>
                             </li>
-                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.95rem', color: '#cbd5e1' }}>
-                                <Phone size={18} style={{ color: '#ec4899', flexShrink: 0 }} />
+                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                                <Phone size={18} style={{ color: 'var(--primary-color)', flexShrink: 0 }} />
                                 <span>+237 699 555 444</span>
                             </li>
-                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.95rem', color: '#cbd5e1' }}>
-                                <Mail size={18} style={{ color: '#cbd5e1', flexShrink: 0 }} />
+                            <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                                <Mail size={18} style={{ color: 'var(--primary-color)', flexShrink: 0 }} />
                                 <span>contact@chambredesicones.cm</span>
                             </li>
                         </ul>
@@ -150,19 +150,19 @@ const PublicLayout = () => {
                     maxWidth: '1200px',
                     margin: '3rem auto 0',
                     paddingTop: '1.5rem',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                    borderTop: '1px solid var(--border-color)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     flexWrap: 'wrap',
                     gap: '1rem',
                     fontSize: '0.8rem',
-                    color: '#64748b'
+                    color: 'var(--text-muted)'
                 }}>
                     <p>&copy; {new Date().getFullYear()} CIEJ. Tous droits réservés.</p>
                     <div style={{ display: 'flex', gap: '1.5rem' }}>
-                        <Link to="/terms" style={{ color: '#64748b' }}>Conditions d'Utilisation</Link>
-                        <Link to="/privacy" style={{ color: '#64748b' }}>Confidentialité</Link>
+                        <Link to="/terms" style={{ color: 'var(--text-muted)' }}>Conditions d'Utilisation</Link>
+                        <Link to="/privacy" style={{ color: 'var(--text-muted)' }}>Confidentialité</Link>
                     </div>
                 </div>
             </footer>
