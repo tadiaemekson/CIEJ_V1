@@ -34,7 +34,6 @@ const DashboardLayout = () => {
                 {/* Logo area */}
                 <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <img src="/logo.png" alt="CIEJ Logo" style={{ height: '36px' }} />
-                    <span style={{ fontSize: '1.1rem', fontWeight: 800 }}>Workspace V2</span>
                 </div>
 
                 {/* Nav Menu */}
