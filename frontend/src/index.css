@@ -218,3 +218,64 @@ a:hover {
 .animate-fade-in {
   animation: fadeIn 0.4s ease forwards;
 }
+
+/* Mobile Navbar Dropdown Styles */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: var(--border-radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background-color: rgba(99, 102, 241, 0.08);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.25rem;
+    align-items: stretch;
+    box-shadow: var(--shadow-lg);
+    z-index: 99;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .nav-menu a, .nav-menu button {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

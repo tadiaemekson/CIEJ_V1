@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
-import { Shield, Users, Calendar, Award, MapPin, Phone, Mail } from 'lucide-react';
+import { Shield, Users, Calendar, Award, MapPin, Phone, Mail, Menu, X } from 'lucide-react';
 
 const PublicLayout = () => {
     const { isAuthenticated, logout } = useAuth();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -17,24 +18,34 @@ const PublicLayout = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <img src="/logo.png" alt="CIEJ Logo" style={{ height: '36px' }} />
                 </div>
-                <nav style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                    <Link to="/" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Accueil</Link>
-                    <Link to="/directory" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Annuaire</Link>
-                    <Link to="/about" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>À Propos</Link>
-                    <Link to="/faq" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>FAQ</Link>
+                
+                {/* Mobile Menu Toggle Button */}
+                <button 
+                    className="nav-toggle" 
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+
+                <nav className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+                    <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Accueil</Link>
+                    <Link to="/directory" onClick={() => setIsMobileMenuOpen(false)} style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Annuaire</Link>
+                    <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>À Propos</Link>
+                    <Link to="/faq" onClick={() => setIsMobileMenuOpen(false)} style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>FAQ</Link>
                     {isAuthenticated ? (
                         <>
-                            <Link to="/dashboard" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>
+                            <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>
                                 Espace Membre
                             </Link>
-                            <button onClick={logout} className="btn btn-outline" style={{ padding: '0.5rem 1rem' }}>
+                            <button onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="btn btn-outline" style={{ padding: '0.5rem 1rem' }}>
                                 Déconnexion
                             </button>
                         </>
                     ) : (
                         <>
-                            <Link to="/login" style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Connexion</Link>
-                            <Link to="/register" className="btn btn-primary glow-on-hover" style={{ padding: '0.5rem 1.25rem' }}>
+                            <Link to="/login" onClick={() => setIsMobileMenuOpen(false)} style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>Connexion</Link>
+                            <Link to="/register" onClick={() => setIsMobileMenuOpen(false)} className="btn btn-primary glow-on-hover" style={{ padding: '0.5rem 1.25rem' }}>
                                 Devenir Membre
                             </Link>
                         </>
