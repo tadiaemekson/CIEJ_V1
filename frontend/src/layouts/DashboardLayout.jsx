@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
-import { LayoutDashboard, Users, CreditCard, Calendar, GraduationCap, Award, Settings, LogOut, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, Users, CreditCard, Calendar, GraduationCap, Award, Settings, LogOut, ShieldAlert, Menu, X } from 'lucide-react';
 
 const DashboardLayout = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const menuItems = user?.role === 'super_admin' ? [
         { name: 'Administration', path: '/dashboard', icon: LayoutDashboard },
@@ -33,15 +34,29 @@ const DashboardLayout = () => {
 
     return (
         <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: 'var(--bg-color)' }}>
+            {/* Left Sidebar Overlay Backdrop for Mobile */}
+            {isSidebarOpen && (
+                <div 
+                    onClick={() => setIsSidebarOpen(false)}
+                    style={{
+                        position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)', 
+                        backdropFilter: 'blur(4px)', zIndex: 98
+                    }}
+                />
+            )}
+
             {/* Left Sidebar */}
-            <aside className="glass-card" style={{
-                width: 'var(--sidebar-width)', borderRadius: 0, borderRight: '1px solid var(--border-glass)',
-                backgroundColor: 'var(--bg-sidebar)', display: 'flex', flexDirection: 'column',
-                position: 'fixed', height: '100vh', zIndex: 10
-            }}>
+            <aside className={`dashboard-sidebar glass-card ${isSidebarOpen ? 'active' : ''}`}>
                 {/* Logo area */}
-                <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <img src="/logo.png" alt="CIEJ Logo" style={{ height: '36px' }} />
+                    <button 
+                        className="sidebar-toggle" 
+                        onClick={() => setIsSidebarOpen(false)}
+                        aria-label="Close sidebar"
+                    >
+                        <X size={20} />
+                    </button>
                 </div>
 
                 {/* Nav Menu */}
@@ -53,6 +68,7 @@ const DashboardLayout = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
+                                onClick={() => setIsSidebarOpen(false)}
                                 style={{
                                     display: 'flex', alignItems: 'center', gap: '0.75rem',
                                     padding: '0.75rem 1rem', borderRadius: 'var(--border-radius-sm)',
@@ -103,17 +119,21 @@ const DashboardLayout = () => {
             </aside>
 
             {/* Main content pane */}
-            <div style={{
-                flex: 1, marginLeft: 'var(--sidebar-width)',
-                display: 'flex', flexDirection: 'column', minHeight: '100vh'
-            }}>
+            <div className="dashboard-content">
                 {/* Header Navbar */}
                 <header className="glass-card" style={{
                     borderRadius: 0, borderBottom: '1px solid var(--border-glass)',
                     padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between',
                     alignItems: 'center', height: 'var(--header-height)'
                 }}>
-                    <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <button 
+                            className="sidebar-toggle" 
+                            onClick={() => setIsSidebarOpen(true)}
+                            aria-label="Open sidebar"
+                        >
+                            <Menu size={20} />
+                        </button>
                         <h4 style={{ fontSize: '1.1rem', fontWeight: 600 }}>
                             {user?.role === 'super_admin' ? 'Espace Secrétariat / Admin' : 'Espace Membre'}
                         </h4>
